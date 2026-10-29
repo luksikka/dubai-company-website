@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hikayat Al Sahra Tourism LLC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #d4af37;
+            --secondary-color: #1a1a2e;
+            --text-dark: #0f0f1e;
+            --text-light: #ffffff;
+            --text-gray: #666;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .logo span {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            font-weight: 300;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        .btn-nav {
+            padding: 0.6rem 1.5rem;
+            background: var(--primary-color);
+            color: var(--text-light) !important;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(26, 26, 46, 0.6), rgba(22, 33, 62, 0.7)),
+                        url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 0 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--primary-color);
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .header-underline {
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        /* Services */
+        .services {
+            padding: 6rem 0;
+            background: #f8f9fa;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        /* Destinations */
+        .destinations {
+            padding: 6rem 0;
+        }
+
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .destination-card {
+            height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .destination-card:hover {
+            transform: scale(1.03);
+        }
+
+        .destination-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            color: white;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+        }
+
+        .destination-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Stats */
+        .stats {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .stat-card {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .stat-card h3 {
+            font-size: 1.3rem;
+            margin: 1rem 0 0.5rem;
+        }
+
+        /* CTA */
+        .cta {
+            padding: 5rem 0;
+            background: var(--secondary-color);
+            color: white;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0f0f1e;
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer h3, .footer h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .footer ul {
+            list-style: none;
+        }
+
+        .footer li {
+            margin-bottom: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            .stat-number {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <h1>Hikayat Al Sahra</h1>
+                    <span>Tourism LLC</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#destinations">Destinations</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact" class="btn-nav">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Travel | Visa Services | Business Setup | PRO Services</h1>
+            <p class="hero-subtitle">Your trusted partner for comprehensive travel and business solutions in Dubai, UAE. We make your dreams come true with professional services and expert guidance.</p>
+            <a href="#contact" class="btn-primary">Get Started Today</a>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Services at a Glance</h2>
+                <div class="header-underline"></div>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📍</div>
+                    <h3>Tourism Services</h3>
+                    <p>Explore the world with our curated travel packages and destination expertise.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📅</div>
+                    <h3>Visa Services</h3>
+                    <p>Quick and hassle-free visa processing for employment, family, and visit visas.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏢</div>
+                    <h3>Business Setup</h3>
+                    <p>Complete company formation and trade license services in the UAE.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📄</div>
+                    <h3>PRO Services</h3>
+                    <p>Professional government liaison services for all your documentation needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations -->
+    <section id="destinations" class="destinations">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Destinations</h2>
+                <p>Discover amazing places around the world with our carefully crafted travel packages.</p>
+                <div class="header-underline"></div>
+            </div>
+            <div class="destinations-grid">
+                <div class="destination-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800');">
+                    <div class="destination-content">
+                        <h3>Dubai</h3>
+                        <p>The Pearl of the Middle East</p>
+                    </div>
+                </div>
+                <div class="destination-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800');">
+                    <div class="destination-content">
+                        <h3>Maldives</h3>
+                        <p>Paradise on Earth</p>
+                    </div>
+                </div>
+                <div class="destination-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800');">
+                    <div class="destination-content">
+                        <h3>Turkey</h3>
+                        <p>Where East Meets West</p>
+                    </div>
+                </div>
+                <div class="destination-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800');">
+                    <div class="destination-content">
+                        <h3>Europe</h3>
+                        <p>Timeless Beauty & Culture</p>
+                    </div>
+                </div>
+                <div class="destination-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800');">
+                    <div class="destination-content">
+                        <h3>Asia</h3>
+                        <p>Exotic Adventures Await</p>
+                    </div>
+                </div>
+                <div class="destination-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=800');">
+                    <div class="destination-content">
+                        <h3>Americas</h3>
+                        <p>Discover the New World</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section id="about" class="stats">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Us</h2>
+                <p>We are committed to providing exceptional service and value to all our clients.</p>
+                <div class="header-underline"></div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">500+</div>
+                    <h3>Trusted Clients</h3>
+                    <p>Serving satisfied customers worldwide</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">48+</div>
+                    <h3>Hours Processing</h3>
+                    <p>Fast and efficient service delivery</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">20+</div>
+                    <h3>Team Members</h3>
+                    <p>Experienced professionals at your service</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <h3>Services</h3>
+                    <p>Comprehensive business solutions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="contact" class="cta">
+        <div class="container">
+            <h2>Ready to Get Started?</h2>
+            <p>Contact us today for a free consultation and let us help you achieve your goals.</p>
+            <a href="tel:+971XXXXXXXX" class="btn-primary">Contact Us Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3>Hikayat Al Sahra Tourism LLC</h3>
+                    <p>Your trusted partner for travel, visa services, business setup, and PRO services in Dubai, UAE.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#destinations">Destinations</a></li>
+                        <li><a href="#about">About Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Services</h4>
+                    <ul>
+                        <li>Tourism Packages</li>
+                        <li>Visa Processing</li>
+                        <li>Business Setup</li>
+                        <li>PRO Services</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li>📍 Dubai, UAE</li>
+                        <li>📞 +971 XX XXX XXXX</li>
+                        <li>✉️ info@hikayatalsahra.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hikayat Al Sahra Tourism LLC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
